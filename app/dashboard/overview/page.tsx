@@ -23,16 +23,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 
 export default function page() {
   const variants1 = {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
   };
-
-
-  
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
@@ -97,16 +95,21 @@ export default function page() {
           </Dialog>
         </div>
       </div>
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="overview" >Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="reports">Reports</TabsTrigger>
-          <TabsTrigger value="summary">Summary</TabsTrigger>
-  
-        </TabsList>
-        <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <Tabs
+        aria-label="Options"
+        className="bg-gray-200 dark:bg-zinc-800 rounded-lg w-full sm:w-3/4 md:w-3/4 lg:w-2/4 xl:w-3/5 overflow-hidden"
+        style={{
+          width: 410,
+        }}
+      >
+        <Tab
+          key="overview"
+          title="Overview"
+          className="rounded-md w-full sm:w-full md:w-full lg:w-full xl:w-full group overflow-hidden"
+        >
+          <Card>
+            <CardBody>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <CardUi>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -251,8 +254,54 @@ export default function page() {
               </CardContent>
             </CardUi>
           </div>
-        </TabsContent>
+            </CardBody>
+          </Card>
+        </Tab>
+
+        <Tab key="analytics" title="Analytics" 
+          className="rounded-md w-full sm:w-full md:w-full lg:w-full xl:w-full group overflow-hidden"
+          >
+          <Card>
+            <CardBody>
+
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab key="reports" title="Reports"
+          className="rounded-md w-full sm:w-full md:w-full lg:w-full xl:w-full group overflow-hidden"
+          >
+          <Card>
+            <CardBody>
+              
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab key="summary" title="Summary"
+          className="rounded-md w-full sm:w-full md:w-full lg:w-full xl:w-full group overflow-hidden"
+          >
+          <Card>
+            <CardBody>
+              
+            </CardBody>
+          </Card>
+        </Tab>
+
+
+
+
       </Tabs>
+      
+      {/* <Tabs defaultValue="overview" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="reports">Reports</TabsTrigger>
+          <TabsTrigger value="summary">Summary</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview" className="space-y-4">
+          
+        </TabsContent>
+      </Tabs> */}
     </div>
   );
 }
