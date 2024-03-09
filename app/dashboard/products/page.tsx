@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import MovieCardTop from "@/components/movies/movie-card-top";
 
 import {
-  // Card,
+  CardUi,
   CardContent,
   CardDescription,
   CardHeader,
@@ -27,13 +27,19 @@ import {
 } from "@/components/ui/dialog";
 import {
   //  Tabs,
-    TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import MovieCardBottom from "@/components/movies/moviecardbottom";
 import BreadCrumb from "@/components/breadcrumb";
 import { Heading } from "@/components/ui/heading";
 import { motion } from "framer-motion";
 
-import {Tabs, Tab,Card, CardBody} from "@nextui-org/react";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+
+import Image from "next/image";
+import { BookmarkIcon } from "@heroicons/react/solid";
 
 const breadcrumbItems = [{ title: "Products", link: "/dashboard/products" }];
 export default function page() {
@@ -43,6 +49,136 @@ export default function page() {
   };
 
   const [selectedTab, setSelectedTab] = useState<string>("Popular");
+
+  const FirstTabData = [
+    {
+      key: "all",
+      title: "All",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ...",
+    },
+    {
+      key: "electronics",
+      title: "Electronics",
+      content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco ...",
+    },
+    {
+      key: "cars",
+      title: "Cars",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "realstate",
+      title: "Real State",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "clothes",
+      title: "Clothes",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "other",
+      title: "Other",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+  ];
+
+  const SecondTabData = [
+    {
+      key: "popular",
+      title: "Popular",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "newreleases",
+      title: "New  Releases",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "recentadded",
+      title: "Recent Added",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+    {
+      key: "foryou",
+      title: "For You",
+      content:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa ...",
+    },
+  ];
+
+  const selectedTabData = [
+    {
+      price: "$200",
+      productName: "Mac Book",
+      location: "Pakistan",
+      productType: "cars",
+      rating: "4.7",
+      imagePath: "/movies/car.jpg",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+    {
+      price: "$500",
+      productName: "IPhone 15 pro max",
+      location: "Bahrain",
+      productType: "electronics",
+      rating: "4.7",
+      imagePath: "/movies/mobile.jpg",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+    {
+      price: "$2000",
+      productName: "House of Dream",
+      location: "Dubai",
+      productType: "realstate",
+      rating: "4.7",
+      imagePath: "/movies/realState.jpg",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+    {
+      price: "$20",
+      productName: "Movie",
+      location: "Galway",
+      productType: "other",
+      rating: "4.7",
+      imagePath: "/movies/a.avif",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+    {
+      price: "1500$",
+      productName: "Beautiful House",
+      location: "Maddina",
+      productType: "realstate",
+      rating: "4.7",
+      imagePath: "/movies/realState.jpg",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+    {
+      price: "$20",
+      productName: "Clothes",
+      location: "Maka",
+      productType: "clothes",
+      rating: "4.7",
+      imagePath: "/movies/cloths.jfif",
+      imageWidth: 200,
+      imageHeight: 110,
+    },
+
+    // ... add more movie data
+  ];
 
   return (
     <motion.div
@@ -56,104 +192,150 @@ export default function page() {
         {/* <Heading title={`Products`} description="" />{" "} */}
       </div>
 
-      <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-        {/* <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Hi Khaled, Welcome back 👋
-          </h2>
-          <div className="hidden md:flex items-center space-x-2">
-            <CalendarDateRangePicker />
-            <Button
-              className="shadow-none"
-              variant="outline"
-              onClick={() =>
-                toast("Event has been created", {
-                  description: "Sunday, December 03, 2023 at 9:00 AM",
-                  action: {
-                    label: "Undo",
-                    onClick: () => console.log("Undo"),
-                  },
-                })
-              }
-            >
-              Add to Calendar
-            </Button>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button size="sm">Download</Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Add New Todo</DialogTitle>
-                  <DialogDescription>
-                    What do you want to get done today?
-                  </DialogDescription>
-                </DialogHeader>
-                <form id="todo-form" className="grid gap-4 py-4">
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Input
-                      id="title"
-                      name="title"
-                      placeholder="Todo title..."
-                      className="col-span-4"
-                    />
-                  </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Textarea
-                      id="description"
-                      name="description"
-                      placeholder="Description..."
-                      className="col-span-4"
-                    />
-                  </div>
-                </form>
-                <DialogFooter>
-                  <DialogTrigger asChild>
-                    <Button type="submit" size="sm" form="todo-form">
-                      Add Todo
-                    </Button>
-                  </DialogTrigger>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </div>
-        </div> */}
+      <div className="flex-1 space-y-4 p-1 md:p-8 pt-1">
+        <div className="flex w-full flex-col ">
+          <Tabs
+            aria-label="Options"
+            className="bg-gray-200 dark:bg-zinc-800 rounded-sm sm:w-full md:w-2/4 lg:w-1/3 xl:w-2/4 "
+          >
+            {FirstTabData.map((tab) => (
+              <Tab
+                key={tab.key}
+                title={tab.title}
+                className="rounded-md sm:w-full md:w-full lg:w-full xl:w-full group "
+              >
+                <Card>
+                  <CardBody>
+                    <div>
+                      <span className="text-black font-semibold">
+                        Featured Ads
+                      </span>
+                    </div>
 
+                    <div className="flex justify-start space-x-4 overflow-x-auto hide-scrollbar overflow-hidden">
+                      {selectedTabData
+                        .filter((product) => product.productType=== tab.key || tab.key === 'all')
+                        .map((product) => (
+                          <div
+                            key={product.productType}
+                            className="max-w-md rounded-lg p-1 mb-3 hover:shadow-lg hover:bg-gray-200"
+                            style={{ width: 270, height: 190 }}
+                          >
+                            <div
+                              className="relative flex-shrink-0 overflow-hidden"
+                              style={{ width: 200, height: 110 }}
+                            >
+                              <Image
+                                src={product.imagePath}
+                                alt="Movie Poster"
+                                width={product.imageWidth}
+                                height={product.imageHeight}
+                                className="rounded-lg object-cover"
+                                style={{ width: "100%", height: "100%" }}
+                              />
 
+                              <div className="absolute top-0 right-0 m-2 bg-gradient-to-b from-transparent to-black rounded-sm px-2 py-1">
+                                <p className="bg-white rounded-sm px-1 font-bold text-xs">
+                                  {product.rating}
+                                </p>
+                              </div>
+                            </div>
 
+                            <div className="flex items-center justify-between p-1">
+                              <div>
+                                <p className="text-lg font-bold text-gray-800">
+                                  {product.price}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                  {product.productName}
+                                </p>
+                                <p className="text-sm text-gray-500">
+                                  {product.location}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
 
+                    <Tabs
+                      aria-label="Options"
+                      className="bg-gray-200 dark:bg-zinc-800 rounded-sm sm:w-full md:w-2/4 lg:w-1/3 xl:w-2/4"
+                    >
+                      {SecondTabData.map((tab) => (
+                        <Tab
+                          key={tab.key}
+                          title={tab.title}
+                          className="rounded-md sm:w-full md:w-full lg:w-full xl:w-full"
+                        >
+                          <Card>
+                            <CardBody>
+                              
+                            </CardBody>
+                          </Card>
+                        </Tab>
+                      ))}
+                    </Tabs>
+                  </CardBody>
+                </Card>
+              </Tab>
+            ))}
+          </Tabs>
+        </div>
 
-    <div className="flex w-full flex-col">
-      <Tabs aria-label="Options" className="bg-gray-100 dark:bg-zinc-800 rounded-sm  w-1/4">
-        <Tab key="photos" title="Photos" className="rounded-md">
-          <Card>
-            <CardBody>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </CardBody>
-          </Card>  
-        </Tab>
-        <Tab key="music" title="Music">
-          <Card>
-            <CardBody>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </CardBody>
-          </Card>  
-        </Tab>
-        <Tab key="videos" title="Videos">
-          <Card>
-            <CardBody>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </CardBody>
-          </Card>  
-        </Tab>
-      </Tabs>
-    </div>  
-  
-
-
-
-
-
+        {/* <Tabs defaultValue="Popular" className="space-y-4 ">
+              <TabsList className="bg-transparent space-x-4">
+                <TabsTrigger
+                  value="Popular"
+                  className="text-md p-1"
+                  style={{
+                    backgroundColor:
+                      selectedTab === "Popular" ? "#cbd5e0" : "transparent",
+                  }}
+                  onClick={() => setSelectedTab("Popular")}
+                >
+                  Popular
+                </TabsTrigger>
+                <TabsTrigger
+                  value="NewReleases"
+                  className="text-md p-1"
+                  style={{
+                    backgroundColor:
+                      selectedTab === "NewReleases" ? "#cbd5e0" : "transparent",
+                  }}
+                  onClick={() => setSelectedTab("NewReleases")}
+                >
+                  New Releases
+                </TabsTrigger>
+                <TabsTrigger
+                  value="RecentlyAdded"
+                  className="text-md p-1"
+                  style={{
+                    backgroundColor:
+                      selectedTab === "RecentlyAdded"
+                        ? "#cbd5e0"
+                        : "transparent",
+                  }}
+                  onClick={() => setSelectedTab("RecentlyAdded")}
+                >
+                  Recently Added
+                </TabsTrigger>
+                <TabsTrigger
+                  value="ForYou"
+                  className="text-md p-1"
+                  style={{
+                    backgroundColor:
+                      selectedTab === "ForYou" ? "#cbd5e0" : "transparent",
+                  }}
+                  onClick={() => setSelectedTab("ForYou")}
+                >
+                  For You
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="Popular" className="space-y-4">
+                <MovieCardBottom />
+              </TabsContent>
+            </Tabs> */}
 
         {/* <Tabs
           defaultValue="overview"
@@ -169,7 +351,7 @@ export default function page() {
 
           <TabsContent value="overview" className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Card>
+              <CardUi>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Total Revenue
@@ -193,8 +375,8 @@ export default function page() {
                     +20.1% from last month
                   </p>
                 </CardContent>
-              </Card>
-              <Card>
+              </CardUi>
+              <CardUi>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Subscriptions
@@ -220,8 +402,8 @@ export default function page() {
                     +180.1% from last month
                   </p>
                 </CardContent>
-              </Card>
-              <Card>
+              </CardUi>
+              <CardUi>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Sales</CardTitle>
                   <svg
@@ -246,8 +428,8 @@ export default function page() {
                     +19% from last month
                   </p>
                 </CardContent>
-              </Card>
-              <Card>
+              </CardUi>
+              <CardUi>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Active Now
@@ -271,10 +453,31 @@ export default function page() {
                     +21 since last hour
                   </p>
                 </CardContent>
-              </Card>
+              </CardUi>
             </div>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
-              <Card className="col-span-4">
+              <CardUi className="col-span-4">
+                <CardHeader>
+                  <CardTitle>Overview</CardTitle>
+                </CardHeader>
+                <CardContent className="pl-2">
+                  <Overview />
+                </CardContent>
+              </CardUi>
+              <CardUi className="col-span-4 md:col-span-3">
+                <CardHeader>
+                  <CardTitle>Recent Sales</CardTitle>
+                  <CardDescription>
+                    You made 265 sales this month.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <RecentSales />
+                </CardContent>
+              </CardUi>
+            </div>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
+              <CardUi className="col-span-4">
                 <CardHeader>
                   <CardTitle>Overview</CardTitle>
                 </CardHeader>
@@ -292,28 +495,7 @@ export default function page() {
                 <CardContent>
                   <RecentSales />
                 </CardContent>
-              </Card>
-            </div>
-            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
-              <Card className="col-span-4">
-                <CardHeader>
-                  <CardTitle>Overview</CardTitle>
-                </CardHeader>
-                <CardContent className="pl-2">
-                  <Overview />
-                </CardContent>
-              </Card>
-              <Card className="col-span-4 md:col-span-3">
-                <CardHeader>
-                  <CardTitle>Recent Sales</CardTitle>
-                  <CardDescription>
-                    You made 265 sales this month.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <RecentSales />
-                </CardContent>
-              </Card>
+              </CardUi>
             </div>
           </TabsContent>
           <TabsContent value="Movies" className="space-y-4">
@@ -377,7 +559,6 @@ export default function page() {
           </TabsContent>
         </Tabs> */}
       </div>
-
     </motion.div>
   );
 }

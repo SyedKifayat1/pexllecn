@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import {
-  Card,
+  CardUi,
   CardContent,
   CardDescription,
   CardHeader,
@@ -30,6 +30,10 @@ export default function page() {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
   };
+
+
+  
+
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
@@ -95,14 +99,15 @@ export default function page() {
       </div>
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="overview" >Overview</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="reports">Reports</TabsTrigger>
           <TabsTrigger value="summary">Summary</TabsTrigger>
+  
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
+            <CardUi>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Total Revenue
@@ -126,8 +131,8 @@ export default function page() {
                   +20.1% from last month
                 </p>
               </CardContent>
-            </Card>
-            <Card>
+            </CardUi>
+            <CardUi>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Subscriptions
@@ -153,8 +158,8 @@ export default function page() {
                   +180.1% from last month
                 </p>
               </CardContent>
-            </Card>
-            <Card>
+            </CardUi>
+            <CardUi>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Sales</CardTitle>
                 <svg
@@ -177,8 +182,8 @@ export default function page() {
                   +19% from last month
                 </p>
               </CardContent>
-            </Card>
-            <Card>
+            </CardUi>
+            <CardUi>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Active Now
@@ -202,18 +207,18 @@ export default function page() {
                   +21 since last hour
                 </p>
               </CardContent>
-            </Card>
+            </CardUi>
           </div>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
+            <CardUi className="col-span-4">
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
               <CardContent className="pl-2">
                 <Overview />
               </CardContent>
-            </Card>
-            <Card className="col-span-4 md:col-span-3">
+            </CardUi>
+            <CardUi className="col-span-4 md:col-span-3">
               <CardHeader>
                 <CardTitle>Recent Sales</CardTitle>
                 <CardDescription>
@@ -223,18 +228,18 @@ export default function page() {
               <CardContent>
                 <RecentSales />
               </CardContent>
-            </Card>
+            </CardUi>
           </div>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
+            <CardUi className="col-span-4">
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
               <CardContent className="pl-2">
                 <Overview />
               </CardContent>
-            </Card>
-            <Card className="col-span-4 md:col-span-3">
+            </CardUi>
+            <CardUi className="col-span-4 md:col-span-3">
               <CardHeader>
                 <CardTitle>Recent Sales</CardTitle>
                 <CardDescription>
@@ -244,7 +249,7 @@ export default function page() {
               <CardContent>
                 <RecentSales />
               </CardContent>
-            </Card>
+            </CardUi>
           </div>
         </TabsContent>
       </Tabs>
