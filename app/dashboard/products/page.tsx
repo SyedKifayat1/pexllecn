@@ -161,7 +161,7 @@ export default function page() {
 
               <div className="flex gap-2 p-2">
                 <div className="flex items-center border rounded-md ">
-                  <SearchIcon size={20} color="black" className="ml-2" />
+                  <SearchIcon size={20}  className="ml-2" />
                   <Input
                     type="text"
                     placeholder="Search Product"
