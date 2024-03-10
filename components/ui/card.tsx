@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-const CardUi = React.forwardRef<
+const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -15,7 +15,7 @@ const CardUi = React.forwardRef<
     {...props}
   />
 ))
-CardUi.displayName = "Card"
+Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -73,4 +73,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { CardUi, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
